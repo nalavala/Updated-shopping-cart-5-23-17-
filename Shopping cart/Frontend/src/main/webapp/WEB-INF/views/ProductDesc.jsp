@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ include file="Header.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +11,7 @@
 	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 	<table>
 		<tr>
-			<td rowspan="6"><img alt="no img" src="H:/nvr/Frontend/src/main/webapp/WEB-INF/resources/images/${prodinfo.pid}.jpg" height="500" width="500">
+			<td rowspan="6"><img alt="no img" src="<c:url value="/resources/images/${prodinfo.pid}.jpg" />" height="500" width="500">
 		</tr>
 		<tr>
 			<td>Product ID</td>
@@ -33,8 +34,8 @@
 			<td>${prodinfo.price}</td>
 		</tr>
 		<tr>
-			<td><a href="/Frontend/viewCart">Add Cart</a></td>
-			<td><a>buy now</a></td>
+			<td><a href="/Frontend/addCart/${prodinfo.pid }">Add Cart</a></td>
+			<td><a href=#>buy now</a></td>
 		</tr>
 
 

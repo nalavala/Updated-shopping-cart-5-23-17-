@@ -22,23 +22,23 @@ public class Customers {
 	@Email
 	
 	String email;
-	@Size(min = 10, max = 10)
-	int phone;
+	
+	String phone;
 
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="user_id")
 	Users users;
 	
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="billing_id")
 	BillingAddress billingAddress;
 	
-	@OneToOne
+	/*@OneToOne
 	@JoinColumn(name="shipping_id")
-	ShippingAddress shippingAddress;
+	ShippingAddress shippingAddress;*/
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="cart_id")
 	Carts cart;
 	
@@ -62,13 +62,13 @@ public class Customers {
 		this.billingAddress = billingAddress;
 	}
 
-	public ShippingAddress getShippingAddress() {
+	/*public ShippingAddress getShippingAddress() {
 		return shippingAddress;
 	}
 
 	public void setShippingAddress(ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
-	}
+	}*/
 
 	public Carts getCart() {
 		return cart;
@@ -110,11 +110,11 @@ public class Customers {
 		this.email = email;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

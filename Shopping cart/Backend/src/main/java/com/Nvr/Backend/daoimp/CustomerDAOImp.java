@@ -24,7 +24,7 @@ public class CustomerDAOImp implements CustomersDAO {
 		user.setEnable(true);
 		Authorities autho=new Authorities();
 		autho.setUsername(user.getUsername());
-		autho.setRole("ROLE_USER");;
+		autho.setRole("ROLE_ADMIN");;
 		
 		Session session=sessionFactory.openSession();
 		session.save(autho);
@@ -36,6 +36,7 @@ public class CustomerDAOImp implements CustomersDAO {
 		customer.setCart(cart);
 		session.save(customer);
 		session.flush();
+		session.close();
 		
 	}
 

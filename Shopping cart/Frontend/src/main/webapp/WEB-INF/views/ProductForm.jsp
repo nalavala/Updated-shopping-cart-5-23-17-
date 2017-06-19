@@ -80,6 +80,7 @@
  
  <div class="container">
   <h2>Product Form</h2>
+  
   <form:form action="saveProduct" modelAttribute="product" enctype="multipart/form-data">
     <div class="form-group">
       <label for="email">Product Name:</label>
@@ -145,8 +146,8 @@
 				<td>${prod.suppid}</td>
 				<td>${prod.price}</td>
 				<td>${prod.stock}</td>
-				<td><a href="<c:url value="deleteProduct/${prod.pid}"/>">Delete</a>
-					<a href="<c:url value="updateProduct/${prod.pid}"/>">Update</a>
+				<td><a href="<c:url value="admin/deleteProduct/${prod.pid}"/>">Delete</a>
+					<a href="<c:url value="admin/updateProduct/${prod.pid}"/>">Update</a>
 				</td>
 			</tr>
 		</c:forEach>

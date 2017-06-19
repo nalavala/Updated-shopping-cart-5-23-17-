@@ -29,6 +29,7 @@ import com.Nvr.Backend.model.Product;
 import com.Nvr.Backend.model.Supplier;
 
 @Controller
+
 public class ProductController {
 	@Autowired
 	ProductDAO productDao;
@@ -40,7 +41,7 @@ public class ProductController {
 	CategoryDAO categoryDao;
 	@Autowired
 	SupplierDAO supplierDao;
-	@RequestMapping("/Product")
+	@RequestMapping("Product")
 	public String productForm(Model m) {
 		m.addAttribute("product", new Product());
 		m.addAttribute("categorylist", categoryDao.showCategory());
@@ -52,7 +53,7 @@ public class ProductController {
 		return "ProductForm";
 	}
 
-	@RequestMapping(value = "/saveProduct")
+	@RequestMapping(value = "saveProduct")
 	public String saveProduct(@Valid @ModelAttribute("product") Product product,
 			@RequestParam("pimage") MultipartFile filedet, Model m,BindingResult result) {
 
@@ -122,7 +123,7 @@ public class ProductController {
 		return "ProductForm";
 	}
 
-	@RequestMapping(value = "/deleteProduct/{pid}")
+	@RequestMapping(value = "deleteProduct/{pid}")
 	public String deletProduct(@PathVariable("pid") int pid, Model m) {
 		productDao.deleteProduct(pid);
 		List<Product> list = productDao.showProduct();
@@ -130,14 +131,14 @@ public class ProductController {
 		return "redirect:/Product";
 	}
 
-	@RequestMapping(value = "/updateProduct/{pid}")
+	@RequestMapping(value = "updateProduct/{pid}")
 	public String updateProductForm(@PathVariable("pid") int pid, Model m) {
 		Product product = productDao.getProduct(pid);
 		m.addAttribute("product", product);
 		return "UpdateProductForm";
 	}
 
-	@RequestMapping(value = "/updateProduct")
+	@RequestMapping(value = "updateProduct")
 	public String updateProduct(@ModelAttribute("product") Product product, Model m) {
 		
 		productDao.updateProduct(product);

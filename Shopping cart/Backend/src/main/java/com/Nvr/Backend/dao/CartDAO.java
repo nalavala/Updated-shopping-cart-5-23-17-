@@ -12,4 +12,6 @@ public interface CartDAO
 	public void deleteCartItem(int cid);
 	 public List<Cart> getCartItems(String user);
 	 public Cart getCart(int cid);
+	public void updateCart(Cart cart);
+	    
 }

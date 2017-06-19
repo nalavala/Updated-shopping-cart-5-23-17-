@@ -16,19 +16,19 @@ public class CartTest
 		context.scan("com.Nvr.Backend");
 		context.refresh();
 		CartDAO cartDao=(CartDAO)context.getBean(CartDAO.class);
-		Cart cart=new Cart();
+		/*Cart cart=new Cart();
 		cart.setId(348);
 		cart.setCartid("23");
 		cart.setUsername("venki");
 		cart.setQuantity(10);
 		cart.setPid(1);
 		cartDao.addToCart(cart);
-		System.out.println("successs");
+		System.out.println("successs");*/
 		
 		List<Cart> list=cartDao.getCartItems("venki");
 		for(Cart c:list)
 		{
-			System.out.println(c.getId());
+			System.out.println(c.getCartid());
 		}
 		context.close();
 	}

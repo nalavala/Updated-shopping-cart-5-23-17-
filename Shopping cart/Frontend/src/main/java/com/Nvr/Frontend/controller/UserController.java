@@ -38,7 +38,7 @@ public class UserController {
 		return "UserHome";
 	}
 
-	@RequestMapping(value = "/ProductDesc/{prodid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{ProductDesc}/{prodid}", method = RequestMethod.GET)
 	public String showProductDesc(@PathVariable("prodid") int prodid, Model m) {
 		Product prod = productDAO.getProduct(prodid);
 		m.addAttribute("prodinfo", prod);

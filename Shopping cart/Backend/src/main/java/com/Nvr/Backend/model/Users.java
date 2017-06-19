@@ -20,7 +20,7 @@ public class Users
 	private String password;
 	private boolean enable;
 	
-	@OneToOne(mappedBy="user")
+	@OneToOne(mappedBy="users")
 	private Customers customer;
 
 	public int getId() {

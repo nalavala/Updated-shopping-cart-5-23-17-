@@ -7,6 +7,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import com.Nvr.Backend.model.Cart;
 @Transactional
 public class CartDAOImp implements CartDAO
 {
+		@Autowired
        private SessionFactory sessionFactory;
        
        
@@ -49,7 +51,7 @@ public class CartDAOImp implements CartDAO
        {
     	   Session session=sessionFactory.openSession();
     	  
-		   Query q =session.createQuery("from Cart where status='np' and userid= :user");
+		   Query q =session.createQuery("from Cart where userid= :user");
 		   q.setParameter("user", user);
     	   @SuppressWarnings("unchecked")
 		   List<Cart> list=q.list();
@@ -64,4 +66,10 @@ public class CartDAOImp implements CartDAO
 		
 		return cart;
 	}
+	
+	@Transactional
+    public void updateCart(Cart cart)
+    {
+        sessionFactory.getCurrentSession().saveOrUpdate(cart);
+    }
 }

@@ -5,6 +5,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,11 +26,13 @@ public class ApplicationConfig
 		System.out.println("ApplicationConfic created.........");
 	}
 
+	@Autowired
+	@Bean(name="dataSource")
 	public DataSource getMYSQLDataSource() {
 		System.out.println("data source enteres.......");
 		DriverManagerDataSource datasource = new DriverManagerDataSource();
 		datasource.setDriverClassName("com.mysql.jdbc.Driver");
-		datasource.setUrl("jdbc:mysql://localhost/db");
+		datasource.setUrl("jdbc:mysql://localhost/school");
 		datasource.setUsername("root");
 		datasource.setPassword("7396");
 		System.out.println("data source creates......");
@@ -62,7 +65,7 @@ public class ApplicationConfig
 		builder.addAnnotatedClass(ShippingAddress.class);
 		builder.addAnnotatedClass(Cart.class);
 		builder.addAnnotatedClass(Carts.class);
-		builder.addAnnotatedClass(Stud.class);
+		
 		builder.addAnnotatedClass(Authorities.class);
 		SessionFactory session = builder.buildSessionFactory();
 		System.out.println("sessionfactory created.............");
